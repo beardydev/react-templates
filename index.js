@@ -1,19 +1,19 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-// Template
-import Template from './Template';
+import {createHistory} from 'history';
+import {Router, useRouterHistory} from 'react-router';
 
-// Child components
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
+import routes from './routes';
+
+const browserHistory = useRouterHistory(createHistory)({
+  basename: '/templates'
+});
 
 render(
-  <Template
-    header={<Header title="Header"/>}
-    content={<Content title="Content"/>}
-    footer={<Footer title="Footer"/>}
+  <Router
+    history={browserHistory}
+    routes={routes}
   />,
   document.getElementById('app')
 );
